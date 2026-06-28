@@ -4,15 +4,15 @@ public class PagoService
 {
     private HashSet<string> processedKeys = new HashSet<string>();
 
-    public void ProcesarPago(Pago pago)
+    public bool ProcesarPago(Pago pago)
     {
         if (processedKeys.Contains(pago.IdempotenciaKey))
         {
-            Console.WriteLine("Este pago ya fue procesado");
-            return;
+            return false;
         }
 
         processedKeys.Add(pago.IdempotenciaKey);
-        Console.WriteLine($"Pago de {pago.Monto} procesado correctamente.");
+        return true;
+
     }
 }

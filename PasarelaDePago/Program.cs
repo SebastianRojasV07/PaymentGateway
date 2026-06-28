@@ -5,11 +5,17 @@ Pago pago2 = new Pago();
 
 pago1.Monto = 150;
 pago1.IdempotenciaKey = "ABC123";
+MostrarResultado(pago1);
+MostrarResultado(pago1);
 
-pago2.Monto = 200;
-pago2.IdempotenciaKey = "XYZ789";
-
-pagoService.ProcesarPago(pago1);
-pagoService.ProcesarPago(pago2);
-pagoService.ProcesarPago(pago1);
-pagoService.ProcesarPago(pago2);
+void MostrarResultado(Pago pago)
+{
+    if (pagoService.ProcesarPago(pago))
+    {
+        Console.WriteLine($"Pago de {pago.Monto} procesado correctamente.");
+    }
+    else
+    {
+        Console.WriteLine("Este pago ya fue procesado.");
+    }
+}
