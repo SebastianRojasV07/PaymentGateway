@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class Class1
+public class Pago
 {
-	public Class1()
-	{
-	}
+    public decimal Monto { get; set; }
+
+    public string IdempotenciaKey { get; set; } = string.Empty;
 }
